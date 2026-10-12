@@ -38,12 +38,13 @@ This guide details all supported AI and cloud service providers in the Hackathon
 ### 1. Google Gemini
 - **Dashboard**: [https://aistudio.google.com/](https://aistudio.google.com/)
 - **Environment Variable**: `GOOGLE_GENERATIVE_AI_API_KEY`
-- **Hackathon Use Case**: Extremely large context windows (up to 1M-2M tokens), multimodal analysis (documents, images, audio, video), and rapid prototyping with Gemini 2.5 / 1.5 Pro and Flash.
+- **Hackathon Use Case**: Extremely large context windows, multimodal analysis (documents, images, audio, video), and rapid prototyping with Gemini models (Flash / Pro).
 - **Billing / Credits**: Google AI Studio provides generous free-tier rate limits for developer testing; paid tier requires Google Cloud billing.
 - **Status**: Optional.
-- **Safe Verification (Offline / Minimal Call)**:
+- **Safe Verification (Header-Based, Minimal Call)**:
   ```bash
-  curl "https://generativelanguage.googleapis.com/v1beta/models?key=$GOOGLE_GENERATIVE_AI_API_KEY"
+  curl https://generativelanguage.googleapis.com/v1beta/models \
+    -H "x-goog-api-key: $GOOGLE_GENERATIVE_AI_API_KEY"
   ```
 - **Common Mistakes**:
   - Confusing Google Cloud Vertex AI service account JSON keys with Google AI Studio API keys.

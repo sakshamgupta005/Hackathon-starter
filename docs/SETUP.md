@@ -31,6 +31,8 @@ Open `.env.local` and supply your Supabase project credentials:
 ```ini
 # Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=https://<your-project-id>.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=<your-anon-publishable-key>
+# NEXT_PUBLIC_SUPABASE_ANON_KEY is also supported as an alias
 NEXT_PUBLIC_SUPABASE_ANON_KEY=<your-anon-publishable-key>
 
 # Public Site URL (Used for auth redirects)

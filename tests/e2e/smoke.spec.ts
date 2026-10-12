@@ -4,9 +4,11 @@ test.describe('Hackathon Starter Smoke Tests', () => {
   test('Landing page renders properly with key sections and CTAs', async ({ page }) => {
     await page.goto('/')
     await expect(page).toHaveTitle(/Hackathon Starter/i)
-    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Ship Your Hackathon MVP/i)
-    await expect(page.getByRole('link', { name: /get started free/i })).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(
+      /Hackathon Starter Foundation/i
+    )
     await expect(page.getByRole('link', { name: /sign in/i }).first()).toBeVisible()
+    await expect(page.getByRole('link', { name: /sign up/i }).first()).toBeVisible()
   })
 
   test('Login route loads login card and handles invalid input', async ({ page }) => {
@@ -41,7 +43,9 @@ test.describe('Hackathon Starter Smoke Tests', () => {
   test('Dashboard loads in development preview mode with setup notice', async ({ page }) => {
     await page.goto('/dashboard')
     await expect(page.getByRole('heading', { name: /application workspace/i })).toBeVisible()
-    await expect(page.getByRole('heading', { name: /welcome to your hackathon workspace/i })).toBeVisible()
-    await expect(page.getByText(/hackathon feature canvas/i)).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: /welcome to your hackathon workspace/i })
+    ).toBeVisible()
+    await expect(page.getByText(/product workspace extension point/i)).toBeVisible()
   })
 })

@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { isSupabaseConfigured } from '@/lib/supabase/config'
 import { loginSchema, signupSchema } from '@/lib/validations/auth'
+import { getSafeRedirectPath } from '@/lib/utils/redirect'
 
 export type AuthActionResult = {
   error?: string
@@ -43,8 +44,9 @@ export async function loginAction(
     return { error: error.message }
   }
 
-  const redirectTo = formData.get('redirectTo')?.toString() || '/dashboard'
-  redirect(redirectTo)
+  const rawRedirectTo = formData.get('redirectTo')?.toString()
+  const safeRedirectTo = getSafeRedirectPath(rawRedirectTo, '/dashboard')
+  redirect(safeRedirectTo)
 }
 
 export async function signupAction(

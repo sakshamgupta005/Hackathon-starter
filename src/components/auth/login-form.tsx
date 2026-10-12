@@ -13,10 +13,13 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert } from '@/components/ui/alert'
 import { AlertCircle, Rocket } from 'lucide-react'
 
+import { getSafeRedirectPath } from '@/lib/utils/redirect'
+
 export function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const redirectTo = searchParams.get('redirectTo') || '/dashboard'
+  const rawRedirectTo = searchParams.get('redirectTo')
+  const redirectTo = getSafeRedirectPath(rawRedirectTo, '/dashboard')
 
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
