@@ -94,4 +94,62 @@ describe('BoundedWorkflow Engine', () => {
     expect(res.completedSteps.length).toBe(1)
     expect(res.completedSteps[0]?.attempts).toBe(2)
   })
+
+  it('validates step configuration and rejects duplicate or invalid step definitions', () => {
+    const workflow = new BoundedWorkflow<DemoContext>()
+
+    expect(() => workflow.addStep(null as unknown as Parameters<typeof workflow.addStep>[0])).toThrow('Workflow step must be an object.')
+    expect(() => workflow.addStep({ id: '', name: 'Test', execute: () => ({ success: true }) })).toThrow('Workflow step must have a non-empty string id.')
+    expect(() => workflow.addStep({ id: 'test', name: '', execute: () => ({ success: true }) })).toThrow('Workflow step must have a non-empty string name.')
+    expect(() => workflow.addStep({ id: 'test', name: 'Test', execute: null as unknown as () => { success: boolean } })).toThrow("Workflow step 'test' must provide an execute function.")
+
+    workflow.addStep({ id: 'step-1', name: 'Step 1', execute: () => ({ success: true }) })
+    expect(() => workflow.addStep({ id: 'step-1', name: 'Duplicate', execute: () => ({ success: true }) })).toThrow("already has a step with id 'step-1'")
+  })
+
+  it('interrupts slow steps with timeout instead of waiting indefinitely', async () => {
+    const workflow = new BoundedWorkflow<DemoContext>()
+
+    workflow.addStep({
+      id: 'hanging-step',
+      name: 'Hanging Step',
+      timeoutMs: 50,
+      execute: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 500))
+        return { success: true }
+      },
+    })
+
+    const res = await workflow.run({ stepCount: 0 }, { timeoutMs: 200 })
+
+    expect(res.success).toBe(false)
+    expect(res.stopReason).toBe('timeout')
+    expect(res.error).toContain("timed out after 50ms")
+  })
+
+  it('supports cancellation using AbortSignal', async () => {
+    const workflow = new BoundedWorkflow<DemoContext>()
+    const controller = new AbortController()
+
+    workflow
+      .addStep({
+        id: 'step-1',
+        name: 'Step 1',
+        execute: () => {
+          controller.abort()
+          return { success: true, nextStepId: 'step-2' }
+        },
+      })
+      .addStep({
+        id: 'step-2',
+        name: 'Step 2',
+        execute: () => ({ success: true }),
+      })
+
+    const res = await workflow.run({ stepCount: 0 }, { signal: controller.signal })
+
+    expect(res.success).toBe(false)
+    expect(res.stopReason).toBe('cancelled')
+    expect(res.completedSteps.length).toBe(1)
+  })
 })
