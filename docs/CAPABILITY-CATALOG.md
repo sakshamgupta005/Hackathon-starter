@@ -59,6 +59,21 @@ Capabilities are ranked by reuse frequency across hackathons, implementation tim
 | **36** | **Reusable Maps, Geolocation & Routing Toolkit** | Geospatial / UI | `READY` | [`src/lib/geo/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/geo/), [`src/components/geo/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/geo/) | 24 tests in `maps-geospatial-toolkit.test.ts` & `map-components.test.tsx` |
 | **37** | **Reusable Payments & Webhook Toolkit** | Payments / Webhooks | `READY` | [`src/lib/payments/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/payments/) | 18 tests in `payments-webhook-toolkit.test.ts` |
 | **38** | **Reusable Background Jobs & Workflow Toolkit** | Async / Workflows | `READY` | [`src/lib/jobs/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/jobs/) | 17 tests in `jobs-workflow-toolkit.test.ts` |
+| **39** | **Reusable Notifications & Messaging Toolkit** | Messaging / Alerts | `READY` | [`src/lib/notifications/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/notifications/) | 16 tests in `notifications-toolkit.test.ts` |
+| **40** | **Reusable Observability, Tracing & Metrics Toolkit** | Observability / Telemetry | `READY` | [`src/lib/observability/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/observability/) | 12 tests in `observability-toolkit.test.ts` |
+| **41** | **Reusable Realtime Collaboration Toolkit** | Real-Time / Collab | `READY` | [`src/lib/realtime/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/realtime/) & [`src/hooks/use-realtime-room.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-realtime-room.ts) | 23 tests in `realtime-collaboration.test.ts` & `realtime.test.tsx` |
+| **42** | **Reusable Computer Vision & Video Processing Toolkit** | Vision / Video | `READY` | [`src/lib/vision/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/vision/) & [`src/components/vision/camera-preview.tsx`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/vision/camera-preview.tsx) | 18 tests in `computer-vision-toolkit.test.ts` & `camera-preview.test.tsx` |
+| **43** | **Reusable Export, Reporting & Document Generation Toolkit** | Export / Reporting | `READY` | [`src/lib/export/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/export/) & [`src/hooks/use-file-download.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-file-download.ts) | 18 tests in `export-reporting-toolkit.test.ts` & `use-file-download.test.tsx` |
+| **44** | **Reusable Testing & Quality Automation Toolkit** | QA / Quality Gates | `READY` | [`src/lib/testing/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/testing/) & [`scripts/verify.mjs`](file:///c:/Users/rspma/Downloads/Hackathon-starter/scripts/verify.mjs) | 16 tests in `testing-automation-toolkit.test.ts` & `ai-quality-evaluation.test.ts` |
+| **45** | **Reusable Feature Flags & Runtime Configuration Toolkit** | Config / Flags | `READY` | [`src/lib/config/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/config/) & [`src/hooks/use-feature-flag.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-feature-flag.ts) | 19 tests in `feature-flags-runtime-config.test.ts` & `use-feature-flag.test.tsx` |
+| **46** | **Reusable API Client & Resilience Toolkit** | API / Resilience | `READY` | [`src/lib/api/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/api/) (`client.ts`, `resilience.ts`, `adapter.ts`) | 21 tests in `api-client.test.ts` & `api-resilience-toolkit.test.ts` |
+| **47** | **Reusable Data Visualization & Dashboard Toolkit** | UI / Analytics | `READY` | [`src/lib/visualization/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/visualization/) & [`src/components/visualization/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/visualization/) | 39 tests in `data-visualization.test.ts` & `dashboard-visualization.test.tsx` |
+| **48** | **Reusable Internationalization, Localization & Accessibility Toolkit** | i18n / a11y | `READY` | [`src/lib/i18n/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/i18n/), [`src/lib/a11y/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/a11y/), [`src/components/i18n/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/i18n/) | 23 tests in `i18n-localization.test.ts` & `i18n-a11y.test.tsx` |
+| **49** | **Reusable PWA & Offline Support Toolkit** | Offline / PWA | `READY` | [`src/lib/pwa/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/pwa/), [`src/components/pwa/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/pwa/) | 19 tests in `pwa-offline.test.ts` & `pwa-components.test.tsx` |
+| **50** | **Reusable Forms & Validation Toolkit** | Forms / Validation | `READY` | [`src/lib/forms/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/forms/), [`src/components/forms/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/forms/) | 20 tests in `forms-validation.test.ts` & `form-toolkit.test.tsx` |
+| **51** | **Reusable AI Evaluation & Benchmarking Toolkit** | AI / Benchmarks | `READY` | [`src/lib/ai-eval/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/ai-eval/), [`src/components/ai-eval/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/ai-eval/) | 23 tests in `ai-evaluation-toolkit.test.ts` & `ai-eval-dashboard.test.tsx` |
+| **52** | **Reusable Deployment & Release Toolkit** | DevOps / Release | `READY` | [`src/lib/release/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/release/), [`Dockerfile`](file:///c:/Users/rspma/Downloads/Hackathon-starter/Dockerfile), [`docs/DEPLOYMENT.md`](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/DEPLOYMENT.md) | 14 tests in `deployment-release-toolkit.test.ts` & `health-route.test.ts` |
+| **53** | **Hackathon Orchestration & Capability Selector** | Orchestration | `READY` | [`src/lib/orchestration/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/orchestration/) & [`scripts/hackathon-init.mjs`](file:///c:/Users/rspma/Downloads/Hackathon-starter/scripts/hackathon-init.mjs) | 13 tests in `hackathon-day-orchestration.test.ts` |
 
 ---
 
@@ -367,6 +382,122 @@ Capabilities are ranked by reuse frequency across hackathons, implementation tim
     - Pause, resume, and automated dispatch into any `IJobQueue` target.
   - **Zero-Dependency Local Architecture**: Runs 100% offline without Redis, Docker, or external workers during development and testing.
 
+### 4.16 Reusable Notifications & Messaging Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/notifications/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/notifications/) (`types.ts`, `templates.ts`, `preferences.ts`, `in-app.ts`, `channels/`, `dispatcher.ts`, `index.ts`)
+- **Test Command**: `npm test tests/unit/notifications-toolkit.test.ts`
+- **What it does**: Provider-neutral multi-channel notifications, safe template rendering, persistent in-app messaging, user preferences, and realtime delivery inspired by **Resend**, **Nodemailer**, **Novu**, and **Socket.IO**:
+  - **Multi-Channel Dispatcher (`NotificationDispatcher`, `sharedNotificationDispatcher`)**:
+    - Coordinates simultaneous fanout across `'email'`, `'in_app'`, `'realtime'`, and `'sms'` channels.
+    - Channel provider abstraction (`INotificationChannelProvider`): Modular, swappable adapters.
+    - Idempotent delivery: `idempotencyKey` caching prevents duplicate notifications across retries or rapid client requests.
+    - Asynchronous delivery mode: Optional `async: true` mode offloads sending to `sharedJobQueue`.
+  - **Safe Notification Templates & XSS Protection (`templates.ts`)**:
+    - Named template registry (`welcome_email`, `security_alert`, `magic_link`).
+    - Variable substitution (`{{name}}`, `{{actionUrl}}`).
+    - HTML escaping (`escapeHtml`) prevents cross-site scripting (XSS) injection in email and in-app views.
+    - Automatic plain-text extraction (`htmlToPlainText`) for email clients without HTML support.
+    - Missing variable validation enforcement.
+  - **User Preferences & Opt-Out Policies (`preferences.ts`)**:
+    - Granular user preferences per channel (`email`, `in_app`, `sms`, `realtime`).
+    - Category opt-outs (`marketing`, `system`).
+    - Strict security policy: Critical `security` alerts (logins from new IPs, password resets, breach notices) cannot be disabled by user opt-outs.
+  - **Persistent In-App Notifications (`in-app.ts`)**:
+    - Inbox querying with pagination (`limit`, `offset`) and unread filters (`unreadOnly`).
+    - Unread count aggregation (`getUnreadCount`).
+    - Individual and batch mark-as-read operations (`markAsRead`, `markAllAsRead`).
+  - **Modular Delivery Adapters (`channels/`)**:
+    - `ResendEmailProvider`: REST-based transactional email via native `fetch` (zero extra SDKs), RFC email validation, and offline mock fallback when `RESEND_API_KEY` is omitted.
+    - `InAppChannelProvider`: Persists notifications into `IInAppStore` (default `InMemoryInAppStore`).
+    - `RealtimeChannelProvider`: Dispatches live push alerts to active UI subscribers and event streams.
+    - `SmsChannelProvider`: E.164 international phone validation with Twilio REST fallback.
+    - `MockChannelProvider`: In-memory recording and deterministic error simulation for automated testing.
+
+### 4.17 Reusable Observability, Tracing & Metrics Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/observability/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/observability/) (`types.ts`, `tracer.ts`, `metrics.ts`, `errors.ts`, `index.ts`) & [`src/lib/logging/logger.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/logging/logger.ts)
+- **Test Command**: `npm test tests/unit/observability-toolkit.test.ts tests/unit/logger.test.ts`
+- **What it does**: Provider-neutral structured logging, request/agent distributed tracing, application metrics, AI cost estimation, and sanitized error reporting inspired by **Pino**, **OpenTelemetry JS**, **Prometheus client**, and **Sentry JS SDK**:
+  - **Structured Logging & Child Context (`StructuredLogger`, `logger`)**:
+    - Contextual bindings (`child({ service, requestId, jobId })`) with automatic context inheritance.
+    - Automated deep secret scrubbing (`redactSensitiveData`) redacting Bearer tokens, API keys, passwords, and authorization cookies.
+    - Log injection prevention (`sanitizeLogMessage`): Strips carriage returns (`\r`) and normalizes line breaks (`\n`) to prevent forged log entries.
+    - Configurable output destinations and in-memory test buffering (`setDestination`, `enableBuffer`, `getBufferedEntries`).
+  - **Distributed Request & Agent Tracing (`Tracer`, `Span`, `sharedTracer`)**:
+    - Span lifecycle tracking across HTTP requests, AI model calls, autonomous agent loops, tool executions, and background jobs.
+    - W3C `traceparent` header propagation (`toTraceparent`, `parseTraceparent`) maintaining `traceId` and `parentSpanId` hierarchy.
+    - Privacy-by-default: Sensitive prompts, user file contents, and credentials are strictly excluded from span tags.
+    - Span error recording (`span.recordError`) with timing calculations (`durationMs`).
+  - **Metrics Registry & Low-Cardinality Guardrails (`MetricsRegistry`, `sharedMetrics`)**:
+    - `Counter`: Monotonically increasing event counts (`http_requests_total`, `ai_requests_total`, `agent_runs_total`).
+    - `Gauge`: Variable state values (`queue_size`, active connections).
+    - `Histogram`: Latency distribution percentiles (count, sum, min, max, avg, p50, p90, p99).
+    - Low-cardinality label validator (`validateLabels`): Rejects unbounded keys (`userId`, `url`, `query`, `prompt`) and limits labels to max 5 per metric.
+    - Grounded AI cost tracking (`calculateAiCost`): Calculates USD expenditure strictly when verified model pricing is configured (returns `undefined` if pricing data is unverified).
+  - **Sanitized Error Reporting & Breadcrumbs (`ErrorReporter`, `sharedErrorReporter`)**:
+    - Exception capture (`captureException`, `captureMessage`) with breadcrumb trails leading up to crashes.
+    - Provider-neutral adapter interface (`IErrorReportingAdapter`).
+    - `MockErrorReportingAdapter`: In-memory recording for unit tests.
+    - Safe non-throwing fallback: Error reporting failures never disrupt core user workflows.
+
+### 4.18 Reusable Realtime Collaboration Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/realtime/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/realtime/) (`collaboration-types.ts`, `collaboration-server.ts`, `collaboration-client.ts`, `websocket.ts`, `sse.ts`, `index.ts`) & [`src/hooks/use-realtime-room.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-realtime-room.ts)
+- **Test Command**: `npm test tests/unit/realtime-collaboration.test.ts tests/components/realtime.test.tsx`
+- **What it does**: Provider-neutral realtime collaboration, room management, ephemeral presence, versioned shared state synchronization, and transient event broadcasting inspired by **Socket.IO**, **Yjs**, **Liveblocks**, and **PartyKit**:
+  - **Transport-Agnostic Realtime Server (`RealtimeServer`)**:
+    - Decoupled from transport specifics via `ISocketConnection` interface (runs seamlessly in Node, WebSockets, Next.js route handlers, Cloudflare Workers, or unit tests).
+    - Room lifecycle: Dynamic creation, membership tracking, and automatic cleanup of vacated rooms.
+    - Message validation & security: Rejects malformed JSON (`INVALID_JSON`), enforces maximum payload sizes (default 64KB, `PAYLOAD_TOO_LARGE`), and throttles spamming clients (sliding-window rate limit, `RATE_LIMIT_EXCEEDED`).
+    - Granular authorization: Server hooks for authentication (`authenticate(token)`), room admission (`canJoinRoom(user, roomId)`), and event publication (`canPublish(user, roomId, event)`).
+    - Graceful connection draining: `shutdown(reason)` broadcasts shutdown notices and cleanly closes sockets with code `1001`.
+  - **Shared State Synchronization & Conflict Resolution**:
+    - Deterministic Last-Write-Wins (LWW) conflict resolution with monotonic sequence ordering (`room.sequence++`).
+    - Optimistic concurrency control: Optional `expectedVersion` parameter prevents dirty writes on concurrent edits (`VERSION_CONFLICT`).
+    - Initial snapshot sync (`room_joined`) and on-demand resynchronization (`state_sync_request` / `state_synced`).
+  - **Ephemeral Presence Tracking**:
+    - Dynamic peer discovery in rooms (`presence_updated`, `presence_left`) containing user ID, display name, cursor positions, and status flags.
+    - Automatic departure cleanup when sockets disconnect or leave rooms.
+  - **Client-Side Reactive Toolkit (`RealtimeCollaborationClient`, `useRealtimeRoom`)**:
+    - High-level client handling reconnects with automatic room re-joining and state resync.
+    - Idempotent message deduplication via sliding-window message ID cache.
+    - Ergonomic React hook (`useRealtimeRoom`): Synchronizes room state, peer presences, provides state mutators (`setStateKey`), broadcast dispatcher (`broadcast`), and unmounts cleanly without socket leaks.
+
+### 4.19 Reusable Computer Vision & Video Processing Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/vision/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/vision/) (`cv-types.ts`, `cv-provider.ts`, `video.ts`, `index.ts`), [`src/hooks/use-camera.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-camera.ts), and [`src/components/vision/camera-preview.tsx`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/vision/camera-preview.tsx)
+- **Test Command**: `npm test tests/unit/computer-vision-toolkit.test.ts tests/components/camera-preview.test.tsx`
+- **What it does**: Provider-neutral computer vision, object detection, image classification, dense embedding extraction, automated video frame analysis, and browser camera streams inspired by **Ultralytics YOLO**, **OpenCV**, **MediaPipe**, **Transformers.js**, and **ONNX Runtime**:
+  - **Provider-Neutral Computer Vision Contract (`IComputerVisionProvider`)**:
+    - Object Detection (`detectObjects`): Predicts labels, confidence scores, and normalized bounding box coordinates (`0.0 <= x, y, width, height <= 1.0`) clamped via `normalizeBoundingBox`.
+    - Image Classification (`classifyImage`): Predicts scene categories with configurable `topK` and `minConfidence` filtering.
+    - Visual Embeddings (`extractImageEmbedding`): Extracts dense 512-dimensional normalized unit vectors for visual similarity search and indexing.
+    - Adapters: `MockComputerVisionProvider` for 100% offline deterministic test runs without GPU, and `HttpComputerVisionProvider` for connecting to any external YOLO (FastAPI), ONNX Runtime, or MediaPipe microservice with `AbortSignal` timeout handling.
+  - **Video Processing & Frame-by-Frame Analysis (`video.ts`)**:
+    - Input validation (`validateVideoInput`): Validates codec/MIME types (`video/mp4`, `video/webm`, `video/quicktime`), enforces file size boundaries (max 50MB, `FILE_TOO_LARGE`), and duration caps (max 60s, `DURATION_EXCEEDED`).
+    - Frame extraction (`extractVideoFrames`): Samples discrete video frames at configurable frame rates (`fps`, default 1 FPS) with exact timestamp offsets (`timestampSeconds`), capped by `maxFrames` without loading entire large video files into memory.
+    - Automated video analysis (`analyzeVideo`): Dispatches frames independently through vision providers, records timestamped detections/classifications, and computes an aggregated summary of detected objects and scene categories across the full video timeline.
+  - **Browser Camera Utilities & UI (`useCamera`, `<CameraPreview />`)**:
+    - `useCamera`: Explicit user-triggered camera streaming via `navigator.mediaDevices.getUserMedia`, track lifecycle disposal on stop/unmount, error classification (`PERMISSION_DENIED`, `DEVICE_NOT_FOUND`, `UNSUPPORTED`), and canvas frame capture returning base64 JPEG data.
+    - `<CameraPreview />`: Accessible camera component rendering live video, controls toolbar (Start, Stop, Capture Frame), error recovery banners, and dynamic bounding-box overlays for real-time detected objects.
+
+### 4.20 Reusable Export, Reporting & Document Generation Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/export/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/export/) (`types.ts`, `csv.ts`, `json.ts`, `excel.ts`, `pdf.ts`, `generator.ts`, `index.ts`) & [`src/hooks/use-file-download.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-file-download.ts)
+- **Test Command**: `npm test tests/unit/export-reporting-toolkit.test.ts tests/components/use-file-download.test.tsx`
+- **What it does**: Provider-neutral document generation, multi-format exports, spreadsheet security, and client-side download management inspired by **ExcelJS**, **PDFKit**, **Puppeteer**, **Papa Parse**, and **SheetJS**:
+  - **Multi-Format Export Dispatcher (`exportData`, `generateReport`)**:
+    - **CSV Serialization (`recordsToCsv`)**: RFC-4180 compliant formatting with delimiter escaping, double-quote wrapping, custom column definitions/formatters, and UTF-8 Byte Order Mark (`\uFEFF`) for flawless Microsoft Excel import.
+    - **Formula-Injection Defense (`sanitizeFormulaValue`)**: Automatically neutralizes dangerous spreadsheet formula injection triggers (`=`, `+`, `-`, `@`, `\t`, `\r` - CWE-1236) by prepending a single quote (`'`), while preserving standard signed numeric quantities (`-42`, `+10`).
+    - **SpreadsheetML Excel Generation (`recordsToExcelXml`)**: Generates valid Microsoft Excel XML workbooks (`.xls`) with explicit cell typing (`String`, `Number`, `DateTime`, `Boolean`), custom column widths, bold headers, alternating row styles, and worksheet naming without bundling heavy native binaries.
+    - **Enveloped JSON Export (`recordsToJson`)**: Flexible JSON output supporting raw arrays or metadata-enveloped reports (`title`, `metadata`, `totalRows`, `exportedAt`).
+    - **Pure TypeScript Vector PDF Generator (`generatePdfDocument`)**: Generates standalone `%PDF-1.4` binary streams with document catalog, Type1 fonts (Helvetica, Helvetica-Bold), multi-page pagination, automatic line-wrapping, structured tables with cell borders, running headers, and running footers with page numbering (`Page X of Y`) without requiring a headless browser.
+    - **Printable HTML Reports (`generatePrintableHtml`)**: Clean HTML reports with `@media print` CSS rules and page-break utilities.
+  - **Storage Integration (`exportAndStore`)**:
+    - Bridges document generation directly with Part 4.7's `IFileStorageAdapter` (local or cloud buckets) with safe filename sanitization protecting against directory traversal.
+  - **Frontend Download Utility (`useFileDownload`, `triggerDownload`)**:
+    - Generates client-side Blobs, triggers native download prompts via transient anchor elements, and automatically revokes object URLs (`URL.revokeObjectURL`) to prevent memory leaks. Manages `isDownloading` and `error` states for asynchronous data fetching.
+
 ---
 
 ## 5. UI Patterns & Presentation
@@ -492,3 +623,242 @@ Capabilities are ranked by reuse frequency across hackathons, implementation tim
 - **Status**: `READY`
 - **Location**: [`.github/workflows/ci.yml`](file:///c:/Users/rspma/Downloads/Hackathon-starter/.github/workflows/ci.yml)
 - **What it does**: Executes lint, typecheck, Vitest, Turbopack build, Playwright smoke tests, and environment validation. Cancels redundant concurrent runs and uploads diagnostic reports on failure.
+
+### 6.4 Reusable Testing & Quality Automation Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/testing/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/testing/) & [`scripts/verify.mjs`](file:///c:/Users/rspma/Downloads/Hackathon-starter/scripts/verify.mjs)
+- **Test Commands**:
+  - `npm run verify`: Fast sequential quality pipeline (env check, ESLint, typecheck, Vitest, Next.js build)
+  - `npm run verify:all`: Full verification pipeline including Playwright E2E smoke tests
+  - `npm test tests/unit/testing-automation-toolkit.test.ts`: Runs mock, PRNG, and API helper tests
+  - `npm test tests/unit/ai-quality-evaluation.test.ts`: Runs AI structured schema, tool call, grounding, and prompt-injection tests
+- **What it does**:
+  - **Deterministic Testing**: `createDeterministicClock` for time travel, `createDeterministicRandom` (Mulberry32 PRNG) for repeatable synthetic data generation, and `createTestFactory` for type-safe domain entities.
+  - **API & Mocking Utilities**: `createMockFetch` lightweight route interceptor (MSW-inspired), `createMockRequest` for App Router handlers, `assertApiResponse` with Zod schema validation, `generateMockWebhookSignature` for HMAC-SHA256 webhooks, and `assertIdempotentExecution`.
+  - **AI Quality Evaluation**: `validateStructuredOutput` (handles both raw JSON and Markdown ````json```` fences with Zod schemas), `validateToolCall` for tool argument contracts, `evaluateCitationGrounding` for hallucination detection and token overlap scoring, and `evaluateAgentLoopTermination` for cycle detection and step budgets.
+  - **Adversarial Resilience**: `PROMPT_INJECTION_VECTORS` catalog covering direct instruction overrides, system prompt extraction, delimiter collision, hypothetical jailbreaks, and markdown image data exfiltration.
+  - **Automated Verification Runner**: `scripts/verify.mjs` executes all quality gates, displays an ANSI status summary table, and guarantees non-zero exit codes on failure.
+
+### 6.5 Reusable Feature Flags & Runtime Configuration Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/config/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/config/) & [`src/hooks/use-feature-flag.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-feature-flag.ts)
+- **Test Command**: `npm test tests/unit/feature-flags-runtime-config.test.ts tests/components/use-feature-flag.test.tsx`
+- **What it does**:
+  - **Typed Runtime Configuration**: Validates environment variables with Zod schemas (`validateServerConfig`), detects runtime environments (`development`, `test`, `production`), and strictly isolates client-safe variables (`getClientConfig`) from server-only secrets.
+  - **Safe Startup Validation**: `assertRequiredEnv` throws actionable errors detailing missing or placeholder keys without exposing secrets.
+  - **Deterministic Rollout Engine**: `calculateRolloutBucket` evaluates FNV-1a hash buckets (`${key}:${userId}`) against 0..100% rollout thresholds ensuring consistent cohort assignment.
+  - **Precedence Hierarchy**: Evaluates flags via 7-tier strict ordering: (1) Emergency kill-switch, (2) Manual/runtime override, (3) User targeting, (4) Role targeting, (5) Environment constraint, (6) Percentage rollout, (7) Default value.
+  - **Reactive React Hook**: `useFeatureFlag` hook subscribes to manager updates and reactively toggles UI elements without full-page reloads.
+  - **Security Barrier**: Client flags control UI rendering only; all sensitive mutations, actions, and routes enforce server-side authentication and authorization guards.
+
+### 6.6 Reusable API Client & Resilience Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/api/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/api/) ([`client.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/api/client.ts), [`resilience.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/api/resilience.ts), [`adapter.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/api/adapter.ts))
+- **Test Command**: `npm test tests/unit/api-client.test.ts tests/unit/api-resilience-toolkit.test.ts`
+- **What it does**:
+  - **Circuit Breaker Policy (Cockatiel Pattern)**: State machine (`CLOSED`, `OPEN`, `HALF_OPEN`) tracking failure rates over configurable rolling sampling windows. Fails-fast with `CircuitBreakerOpenError` without calling downstream services when open, and probes health during half-open transitions.
+  - **Bulkhead Concurrency Limiter**: Regulates simultaneous in-flight operations with pending request queues, rejecting overflow with `ConcurrencyLimitError` to prevent socket exhaustion.
+  - **Token-Bucket Rate Limiter**: Client-side token bucket algorithm enforcing maximum requests per time interval and throwing `RateLimitExceededError`.
+  - **Idempotency Guard & Safe Retries**: Enforces exponential backoff with full jitter on 5xx, 429, and network failures. Never automatically retries non-idempotent `POST`/`PATCH` requests unless explicitly marked `idempotent: true`. Parses `Retry-After` response headers.
+  - **Provider Adapter Architecture**: `BaseApiAdapter` provides clean decoupling with provider-specific headers, auth injection, endpoint resolution, custom error mapping, and offline mock support without coupling domain code to external SDKs.
+  - **Credential Redaction & Telemetry Hooks**: Automatically scrubs sensitive headers (`Authorization`, `X-Api-Key`, `Cookie`) from error messages and logs while broadcasting structured lifecycle events (`onRequestStart`, `onRequestSuccess`, `onRequestError`, `onRetry`, `onCircuitStateChange`).
+
+### 6.7 Reusable Data Visualization & Dashboard Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/visualization/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/visualization/) & [`src/components/visualization/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/visualization/)
+- **Live Demo Page**: [`/dashboard/analytics`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/dashboard/analytics/page.tsx)
+- **Test Command**: `npm test tests/unit/data-visualization.test.ts tests/components/dashboard-visualization.test.tsx`
+- **Reference Repositories Studied**:
+  - `recharts/recharts`: Declarative React SVG composition, Cartesian grids, axis ticks, and responsive containers.
+  - `apache/echarts`: High-density series performance, customizable coordinate spaces, and visual hierarchy.
+  - `chartjs/Chart.js`: HTML5 canvas rendering, responsive viewport management, and tooltips.
+  - `TanStack/table`: Headless sorting, filtering, and pagination contracts.
+  - `tremorlabs/tremor`: Tailwind-native dashboard layout building blocks, KPI metric cards, and badge accents.
+- **Why Pure SVG (Zero Heavy Dependencies)**:
+  - Avoided bundling multi-megabyte canvas charting libraries that conflict with React 19 SSR or introduce heavy client bundles.
+  - Pure SVG components (`<svg viewBox="...">`) are 100% server-side rendering safe in Next.js 16 App Router.
+  - Built-in accessibility: Accessible `role="img"`, `<title>`, `<desc>`, interactive keyboard-focusable nodes (`tabIndex={0}`), and screen-reader data summaries.
+  - Theme compatibility: Styled with Tailwind CSS v4 variables and semantic classes (`dark:border-slate-800`, `text-slate-900`, `dark:text-slate-100`).
+- **Core Components & Layout Primitives**:
+  - `MetricCard`: KPI display with title, value, previous value comparison, trend direction badge (`up`, `down`, `neutral`), custom icon, and responsive SVG sparkline path.
+  - `LineChart`: Trend line chart with straight or smooth cubic Bézier curves, data dots, hover guidelines, coordinate-mapped tooltips, and grid lines.
+  - `BarChart`: Vertical comparative bar chart with rounded tops, auto-calculated slot widths, hover tooltips, and category labels.
+  - `AreaChart`: Cumulative volume chart with linear gradient opacity fills, baseline anchoring, and tick marks.
+  - `DonutChart`: Proportional pie/donut chart with trigonometric arc geometry, center summary metric, interactive slice focus, and percentage color legend.
+  - `PaginatedDataTable`: Sortable, searchable, and paginated data table building on existing `Table` and `Pagination` primitives with dynamic per-page limits.
+  - `DashboardHeader`: Page header with title, description, last updated indicator, refresh trigger, and custom actions.
+  - `DashboardGrid`: Responsive 1-to-4 column grid layout (`sm:grid-cols-2 lg:grid-cols-4`).
+  - `DashboardSection`: Content grouping panel with header and action slots.
+  - `DateRangeFilter`: Keyboard-accessible pill presets (`7D`, `30D`, `90D`, `1Y`, `ALL`) with active states.
+  - `DemoDashboard`: Fully integrated analytics workspace utilizing deterministic mock data fixtures (`[DEMO FIXTURE]`).
+- **Data Transformation & Formatting Utilities**:
+  - `formatNumber`: Standard and compact notation formatting (e.g., `1,250`, `1.5M`).
+  - `formatCurrency`: Multi-currency formatting with compact notation (e.g., `$124,500`, `$2.5M`).
+  - `formatPercent`: Percentage formatting with optional delta sign (`+12.4%`, `-5.2%`).
+  - `formatDate`: Standardized date formatting (`short`, `medium`, `long`, `iso`).
+  - `validateChartData`: Schema sanitization that catches `NaN`, `Infinity`, and invalid inputs while providing fallbacks.
+  - `aggregateBy`: Group-by aggregator supporting `sum`, `avg`, `count`, `min`, and `max`.
+  - `sortBy`: Ascending and descending sort utility.
+  - `calculateDomain`: Dynamic range and tick spacing computation with breathing room padding.
+  - `generateSparklinePath`: Normalized SVG path generator with trend slope detection.
+
+### 6.8 Reusable Internationalization, Localization & Accessibility Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/i18n/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/i18n/), [`src/lib/a11y/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/a11y/), & [`src/components/i18n/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/i18n/)
+- **Live Demo Page**: [`/dashboard/localization`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/dashboard/localization/page.tsx)
+- **Test Command**: `npm test tests/unit/i18n-localization.test.ts tests/components/i18n-a11y.test.tsx`
+- **Reference Repositories Studied**:
+  - `i18next/i18next` & `react-i18next`: Centralized translation dictionaries, nested key resolution, fallback language hierarchies, variable interpolation (`{{var}}`, `{var}`), and reactive React context hooks (`useTranslation`, `useI18n`).
+  - `formatjs/formatjs`: Native ECMAScript standard Internationalization API (`Intl.DateTimeFormat`, `Intl.NumberFormat`, `Intl.PluralRules`, `Intl.RelativeTimeFormat`), timezone support, and locale-specific currency display.
+  - `lingui/js-lingui`: Message extraction conventions, lightweight runtime overhead, and bundle efficiency.
+  - `dequelabs/axe-core`: Automated WCAG 2.1 AA evaluation rules, DOM violation inspection, and failure summaries.
+- **Why Zero Substantial Dependencies**:
+  - Leverages standard ECMAScript `Intl` APIs natively supported in all modern Node.js and browser runtimes.
+  - `axe-core` is dynamically imported and reused from the repository's test toolchain for automated accessibility scans without adding runtime production bundles.
+- **Core i18n & Localization Architecture**:
+  - `Translator`: Fast nested key lookup (`t('common.save')`), variable interpolation (`{{name}}` and `{name}`), exact count and `Intl.PluralRules` pluralization (`zero`, `one`, `other`), and fallback resolution to `en`.
+  - `formatLocaleDate`: Locale-aware date formatting with configurable timezone parameters (`timezone: 'America/New_York'`, `'Europe/Paris'`, `'UTC'`).
+  - `formatLocaleNumber`: Number formatting with locale digit grouping and compact notation.
+  - `formatLocaleCurrency`: Currency formatting with locale-specific symbols, placement, and codes (`USD`, `EUR`, `AED`).
+  - `formatRelativeTime`: Native `Intl.RelativeTimeFormat` calculations (e.g., "in 3 days", "il y a 2 heures").
+  - `I18nProvider`: Reactive React context syncing `document.documentElement.lang` and `document.documentElement.dir` (`ltr` vs `rtl` for Arabic), persisting user locale preference to `localStorage`.
+- **Accessibility (a11y) Architecture**:
+  - `LiveAnnouncer` & `useAnnounce`: Visually hidden screen-reader live regions (`aria-live="polite"` and `aria-live="assertive"`, `aria-atomic="true"`) for dynamic notifications.
+  - `trapFocus` & `getFocusableElements`: Focus trapping for modals, dialogs, and flyout menus respecting `Tab` and `Shift+Tab`.
+  - `usePrefersReducedMotion`: Reactive system media query subscription via React 19 `useSyncExternalStore` for respecting reduced motion preferences.
+  - `runA11yAudit`: Automated WCAG audit runner wrapping `axe-core`, extracting violation summaries, impacts (`minor`, `moderate`, `serious`, `critical`), and node HTML references.
+  - **Manual Accessibility Requirement**: Automated audits catch syntax and contrast violations; manual testing with keyboard navigation and screen readers (NVDA, VoiceOver) is explicitly documented as essential for full compliance.
+- **Components & UI Building Blocks**:
+  - `LanguageSwitcher`: Accessible language switcher with dropdown and pill variants, displaying flags, native names, keyboard selection, and `aria-expanded` state.
+  - `LocaleDemo`: Interactive showcase demonstrating live locale switching across English, Spanish, French, German, and Arabic (RTL), pluralization counter, currency formatting, live screen-reader announcer tests, and automated WCAG scans.
+
+### 6.9 Reusable PWA & Offline Support Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/pwa/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/pwa/), [`src/components/pwa/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/pwa/), [`src/hooks/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/) (`use-network-status.ts`, `use-pwa-install.ts`, `use-offline-queue.ts`), & [`public/sw.js`](file:///c:/Users/rspma/Downloads/Hackathon-starter/public/sw.js)
+- **Live Demo Page**: [`/dashboard/pwa`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/dashboard/pwa/page.tsx)
+- **Manifest Route**: [`/manifest.webmanifest`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/manifest.ts)
+- **Test Command**: `npm test tests/unit/pwa-offline.test.ts tests/components/pwa-components.test.tsx`
+- **Reference Repositories Studied**:
+  - `vite-pwa/vite-plugin-pwa`: Zero-config PWA manifest and service worker lifecycle generation with strict enable/disable switches.
+  - `GoogleChrome/workbox`: Industry-standard caching strategies (`CacheFirst`, `NetworkFirst`, `NetworkOnly`), background sync, and offline fallbacks.
+  - `serwist/serwist`: Modern Next.js App Router and Turbopack compatible service worker framework.
+  - `jakearchibald/idb`: Promise-based wrapper around IndexedDB for structured client-side storage.
+- **Why Pure Native Standards (Zero Heavy Dependencies)**:
+  - Leverages standard Web APIs: `navigator.serviceWorker`, `window.indexedDB`, `navigator.onLine`, and Next.js 16 native App Router `manifest.ts` route without installing heavyweight external build plugins.
+  - Keeps the default hackathon application lightweight and 100% domain-agnostic.
+- **PWA Foundation & Build Configuration**:
+  - `isPwaEnabled()`: Strictly evaluates `NEXT_PUBLIC_PWA_ENABLED === 'true'`. When disabled, `registerServiceWorker()` proactively unregisters existing service workers and purges cached assets to prevent ghost cache bugs during active development.
+  - Next.js 16 App Router Manifest ([`src/app/manifest.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/manifest.ts)): Generates `/manifest.webmanifest` with configurable app name, short name, theme colors (`#2563eb`), background color, and standalone display mode.
+  - Service Worker Script ([`public/sw.js`](file:///c:/Users/rspma/Downloads/Hackathon-starter/public/sw.js)): Workbox-style precaching of app shell assets and offline fallback page (`/offline.html`), `CacheFirst` for static assets (styles, scripts, images, fonts), and `NetworkFirst` for HTML navigation requests.
+  - **Security Guarantee & Sensitive Cache Exclusion**: URLs matching `/api/`, `/auth/`, `supabase.co`, or administrative routes are strictly enforced as `NetworkOnly` and never cached by the service worker, eliminating credential leakage or stale security authorization.
+  - Browser & HTTPS requirements: Service Workers and PWA installation require HTTPS in production or `localhost` in local development.
+- **Offline Behavior & Client Persistence**:
+  - `OfflineStorage` ([`src/lib/pwa/indexed-db.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/pwa/indexed-db.ts)): Structured Promise-based IndexedDB storage supporting `get`, `set`, `delete`, `getAll`, and `clear` with seamless in-memory fallback for SSR and test runners.
+  - `useNetworkStatus` ([`src/hooks/use-network-status.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-network-status.ts)): Subscribes to browser `online` and `offline` events, providing real-time connectivity status and disconnect timestamps.
+  - `OfflineBanner` ([`src/components/pwa/offline-banner.tsx`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/pwa/offline-banner.tsx)): Accessible status banner notifying users when offline, showing queued pending action counts, and offering a "Sync Now" trigger when reconnected.
+  - `PwaInstaller` ([`src/components/pwa/pwa-installer.tsx`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/pwa/pwa-installer.tsx)): Captures `beforeinstallprompt` event and presents an install prompt card with dismissal memory.
+- **Action Synchronization & Resilience**:
+  - `OfflineQueueManager` ([`src/lib/pwa/offline-queue.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/pwa/offline-queue.ts)): Queues mutations with auto-generated idempotency keys (`Idempotency-Key` HTTP header), tracks attempts up to `maxRetries` (default 3), and triggers auto-sync upon browser `online` events.
+  - `useOfflineQueue` ([`src/hooks/use-offline-queue.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/use-offline-queue.ts)): Subscribes React components to queued action updates with manual sync triggers.
+
+### 6.10 Reusable Forms & Validation Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/forms/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/forms/) (`types.ts`, `resolver.ts`, `file-validation.ts`, `use-form.ts`, `use-field-array.ts`, `use-multi-step-form.ts`, `index.ts`), [`src/components/forms/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/forms/), & [`src/hooks/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/hooks/)
+- **Live Demo Page**: [`/dashboard/forms`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/dashboard/forms/page.tsx)
+- **Test Command**: `npm test tests/unit/forms-validation.test.ts tests/components/form-toolkit.test.tsx`
+- **Reference Repositories Studied**:
+  - `react-hook-form/react-hook-form`: Uncontrolled and controlled form state management, deep nested object path resolution, dynamic field arrays, and validation resolvers.
+  - `colinhacks/zod`: Type-safe schema definitions, async parsing (`safeParseAsync`), and issue path mapping.
+  - `TanStack/form`: Headless reactive form state architecture, granular field subscriptions, and submission locks.
+  - `formkit/formkit`: Accessible label, description, and live error region announcements (`aria-describedby`, `aria-invalid`, `role="alert"`).
+  - `transloadit/uppy`: Client-side file safety inspection, size limits, and binary magic-bytes format detection.
+- **Why Zero Extra Packages (Zero Dependency Overhead)**:
+  - Built purely on existing React 19 primitives and Zod 4 already installed in the repository. Avoids third-party React 19 peer-dependency conflicts.
+- **Form Foundation & Schema Validation**:
+  - `useForm`: Type-safe form hook providing `register`, `setValue`, `setError`, `clearErrors`, `validateForm`, `handleSubmit`, `reset`, `restoreDraft`, and `clearDraft`.
+  - Double-submission guard: Locks submission via `isSubmitting` flag, preventing accidental double submits and duplicate API requests.
+  - Deep path resolution (`getNestedValue`, `setNestedValue`): Seamlessly resolves dot-notation paths (`profile.name`, `teamMembers.0.role`).
+  - `mapServerErrors`: Normalizes backend errors (HTTP 422 Unprocessable Entity, nested details objects, or array error lists) onto form field error paths.
+- **Advanced Form Capabilities**:
+  - `useFieldArray`: Dynamic array manager supporting `fields`, `append`, `prepend`, `remove`, `update`, `swap`, `move`, and `replace` with unique reconciliation IDs.
+  - `useMultiStepForm`: Multi-step form controller with step validation barriers (blocks proceeding until current step fields are valid), progress percentage calculation, and step navigation.
+  - `<MultiStepFormStepper />`: Accessible navigation bar rendering visual progress and numbered step indicators with `aria-current="step"`.
+  - Draft Preservation: Automatically saves drafts to `sessionStorage` with built-in sensitive key filtering (passwords, tokens, API keys are strictly excluded from storage).
+  - `<FormFieldWrapper />`: Accessible container wrapping inputs with labels, required asterisks, descriptions, and assertive live error alerts.
+- **File Safety & Magic-Bytes Verification**:
+  - `validateFileSafety` & `detectMagicType`: Validates file size, file extension whitelist, MIME types, and verifies true binary headers (JPEG `FF D8 FF`, PNG `89 50 4E 47`, GIF `47 49 46 38`, PDF `%PDF`, WebP) to prevent extension spoofing.
+
+### 6.11 Reusable AI Evaluation & Benchmarking Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/ai-eval/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/ai-eval/) (`types.ts`, `evaluators.ts`, `dataset.ts`, `runner.ts`, `benchmark.ts`, `reporter.ts`, `index.ts`), & [`src/components/ai-eval/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/components/ai-eval/) (`eval-dashboard.tsx`)
+- **Live Demo Page**: [`/dashboard/ai-eval`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/dashboard/ai-eval/page.tsx)
+- **Test Command**: `npm test tests/unit/ai-evaluation-toolkit.test.ts tests/components/ai-eval-dashboard.test.tsx`
+- **Reference Repositories Studied**:
+  - `promptfoo/promptfoo`: Versioned datasets, test assertion matrix (`exact-match`, `normalized-text`, `keyword`, `json-schema`, `cost`), side-by-side prompt/model comparisons, and CI integration.
+  - `confident-ai/deepeval`: Metric evaluators (Groundedness, Faithfulness, Tool Call correctness, Rubric), test cases with threshold gating.
+  - `explodinggradients/ragas`: Context groundedness, retrieval attribution, and token-overlap evaluation.
+  - `langfuse/langfuse`: Traced execution scores, latency tracking, transparent token usage, and baseline comparisons.
+- **Why Zero Extra Packages (Zero Dependency Overhead)**:
+  - Built natively in TypeScript on the existing AI provider adapters (`src/lib/ai/`), agent foundation (`src/lib/agent/`), and metrics cost calculator (`src/lib/observability/metrics.ts`).
+  - Never fabricates token counts or costs: preserves real provider usage or marks untracked values as `undefined`.
+- **Modular Evaluator Types**:
+  - `exact-match`: Strict string equality assertion.
+  - `normalized-text`: Lowercase, punctuation-stripped, and whitespace-normalized comparison.
+  - `keyword`: Required keywords presence and forbidden keywords absence check.
+  - `json-schema`: Validates raw or markdown-wrapped JSON output against Zod schemas or required property arrays.
+  - `tool-call`: Verifies correct tool invocation name and schema-valid tool arguments.
+  - `citation-groundedness`: Verifies `[doc-1]` citation presence and token overlap against provided context documents (note: heuristic scores provide directional signals, not mathematical proof of absolute truth).
+  - `rubric`: Evaluates checklist criteria (bullets, word counts, required topics).
+  - `prompt-injection-safety`: Tests whether the model resists adversarial injection vectors (does not leak system instructions, does not echo exploit canaries like 'PWNED').
+  - `latency`: Asserts response latency against a millisecond threshold budget.
+- **Evaluation Runner & Dataset Management**:
+  - `EvaluationRunner`: Executes versioned datasets with timeouts, AbortSignal cancellation, and deterministic mock providers (`createMockProviderRunner`).
+  - `DEFAULT_BENCHMARK_DATASET`: Curated 7-case benchmark covering classification, structured extraction, RAG question answering, tool calls, and prompt-injection safety.
+  - `compareWithBaseline`: Compares current evaluation runs against saved baselines, flagging score drops, pass rate drops, latency degradation, and threshold violations.
+- **Privacy & Safety Guarantees**:
+  - `redactSensitiveData`: Automatically scrubs OpenAI (`sk-...`), Google (`AIza...`), Groq (`gsk_...`), Bearer tokens, and passwords from all exported reports.
+  - Synthetic data by default: Test suites use 100% synthetic sanitized prompts, never executing untrusted instructions.
+
+### 6.12 Reusable Deployment & Release Toolkit
+- **Status**: `READY`
+- **Location**: [`src/lib/release/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/release/) (`types.ts`, `readiness.ts`, `smoke-test.ts`, `container-config.ts`, `index.ts`), [`Dockerfile`](file:///c:/Users/rspma/Downloads/Hackathon-starter/Dockerfile), [`docker-compose.yml`](file:///c:/Users/rspma/Downloads/Hackathon-starter/docker-compose.yml), [`render.yaml`](file:///c:/Users/rspma/Downloads/Hackathon-starter/render.yaml), [`vercel.json`](file:///c:/Users/rspma/Downloads/Hackathon-starter/vercel.json), & [`docs/DEPLOYMENT.md`](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/DEPLOYMENT.md)
+- **Health Check Probe**: [`/api/health`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/app/api/health/route.ts) (`?probe=liveness`, `?probe=readiness`)
+- **CLI Scripts**: `npm run release:check` ([`scripts/release-check.mjs`](file:///c:/Users/rspma/Downloads/Hackathon-starter/scripts/release-check.mjs)) & `npm run smoke` ([`scripts/smoke-test.mjs`](file:///c:/Users/rspma/Downloads/Hackathon-starter/scripts/smoke-test.mjs))
+- **Test Command**: `npm test tests/unit/deployment-release-toolkit.test.ts tests/unit/health-route.test.ts`
+- **Reference Repositories Studied**:
+  - `docker/compose`: Multi-service orchestration, port isolation, and container health checks.
+  - `docker/docs`: Multi-stage build patterns (`deps` -> `builder` -> `runner`), `node:22-alpine` minimal images, and non-root execution (`USER nextjs` UID 1001).
+  - `actions`: Reusable workflows, least-privilege permissions, secret isolation, and manual triggers (`workflow_dispatch`).
+  - `vercel/examples`: Zero-config serverless App Router presets, clean URLs, and preview branch workflows.
+  - `render-examples`: Infrastructure-as-code `render.yaml` blueprints, web service plans, and health check integration.
+- **Environment & Release Readiness**:
+  - `evaluateReleaseReadiness`: Audits active environment for production settings (`NODE_ENV=production`), scans for mock/dummy credential placeholders (`your-...`, `placeholder-...`, `TODO-...`, `change-me`), and flags client-side `NEXT_PUBLIC_` secret prefix leaks.
+  - Never prints raw secrets: Masks credentials with safe previews (`sk-...def`) across all audit outputs.
+  - Disclaims false readiness: Explicitly warns that a successful build does not equate to complete product readiness.
+- **Production Containerization**:
+  - Multi-stage Next.js Dockerfile with non-root security (`USER nextjs`), `3000` port exposure, minimal alpine runtime, and native `HEALTHCHECK` probe.
+  - `docker-compose.yml` provides instant zero-setup local emulation.
+- **Operational Health & Probes**:
+  - `GET /api/health`: Comprehensive liveness, readiness, uptime, version, short commit SHA, and memory usage inspection without secret leaks.
+- **Automated Smoke Testing**:
+  - `runSmokeTests`: Probes live URLs post-deployment across health endpoints, root landing page HTML, security headers, 404 isolation (zero stack trace leakage), and web app manifest availability.
+
+---
+
+## 25. Hackathon-Day Orchestration & Capability Selection
+
+### 25.1 Capability Selector & Project Initialization Engine
+- **Status**: `READY`
+- **Location**: [`src/lib/orchestration/`](file:///c:/Users/rspma/Downloads/Hackathon-starter/src/lib/orchestration/) & [`scripts/hackathon-init.mjs`](file:///c:/Users/rspma/Downloads/Hackathon-starter/scripts/hackathon-init.mjs)
+- **Test Command**: `npm test tests/unit/hackathon-day-orchestration.test.ts`
+- **What it does**: Turns the Hackathon Starter into a cohesive, reusable engine for Antigravity:
+  - **Dynamic Capability Matching**: Analyzes raw problem statements, mapping requirements to the 52 modular capabilities while filtering out unneeded modules to avoid bloat.
+  - **Topological Task Generation**: Generates dependency-ordered implementation tasks (P1 Domain -> P2 Service/Mocks -> P3 UI -> P4 E2E) with explicit verification gates.
+  - **Automated Project Initializer**: CLI script (`npm run hackathon:init`) generating `HACKATHON-PLAN.md` with environment variable audits and baseline checks.
+  - **Bounded AI Execution Loop**: Integrates the existing agent engine with strict iteration caps, timeout limits, and human-in-the-loop approvals for destructive operations.
+
+
+
+
+
+

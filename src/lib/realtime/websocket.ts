@@ -65,6 +65,7 @@ export class WebSocketClient {
 
   private messageHandlers = new Set<MessageHandler>()
   private typedHandlers = new Map<string, Set<MessageHandler<unknown>>>()
+  private statusListeners = new Set<(status: WebSocketStatus) => void>()
 
   private options: Required<
     Omit<
@@ -163,6 +164,7 @@ export class WebSocketClient {
     this.offlineQueue = []
     this.messageHandlers.clear()
     this.typedHandlers.clear()
+    this.statusListeners.clear()
   }
 
   public send(data: unknown): boolean {
@@ -198,6 +200,11 @@ export class WebSocketClient {
     return () => this.messageHandlers.delete(handler)
   }
 
+  public onStatusChange(handler: (status: WebSocketStatus) => void): () => void {
+    this.statusListeners.add(handler)
+    return () => this.statusListeners.delete(handler)
+  }
+
   public on<T = unknown>(type: string, handler: MessageHandler<T>): () => void {
     if (!this.typedHandlers.has(type)) {
       this.typedHandlers.set(type, new Set())
@@ -218,6 +225,9 @@ export class WebSocketClient {
     if (this.status !== newStatus) {
       this.status = newStatus
       this.options.onStatusChange?.(newStatus)
+      for (const listener of this.statusListeners) {
+        listener(newStatus)
+      }
     }
   }
 

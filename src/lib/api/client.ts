@@ -16,6 +16,7 @@
  */
 
 import { z } from 'zod'
+import type { ApiClientHooks } from './types'
 
 export type ApiErrorCode =
   | 'HTTP_ERROR'
@@ -24,7 +25,66 @@ export type ApiErrorCode =
   | 'ABORTED'
   | 'PARSE_ERROR'
   | 'VALIDATION_ERROR'
+  | 'CIRCUIT_OPEN'
   | 'UNKNOWN'
+
+const SENSITIVE_HEADERS = new Set([
+  'authorization',
+  'x-api-key',
+  'cookie',
+  'set-cookie',
+  'proxy-authorization',
+])
+
+/**
+ * Redacts authorization tokens, cookies, and api keys from logged or reported headers
+ */
+export function redactSensitiveHeaders(headers?: HeadersInit): Record<string, string> {
+  const result: Record<string, string> = {}
+  if (!headers) return result
+
+  if (headers instanceof Headers) {
+    headers.forEach((val, key) => {
+      result[key.toLowerCase()] = SENSITIVE_HEADERS.has(key.toLowerCase()) ? '[REDACTED]' : val
+    })
+  } else if (Array.isArray(headers)) {
+    for (const [key, val] of headers) {
+      result[key.toLowerCase()] = SENSITIVE_HEADERS.has(key.toLowerCase()) ? '[REDACTED]' : val
+    }
+  } else {
+    for (const [key, val] of Object.entries(headers)) {
+      result[key.toLowerCase()] = SENSITIVE_HEADERS.has(key.toLowerCase()) ? '[REDACTED]' : String(val)
+    }
+  }
+
+  return result
+}
+
+/**
+ * Normalized API Client Error
+ */
+export class ApiClientError extends Error {
+  public readonly status: number
+  public readonly code: ApiErrorCode
+  public readonly requestId: string
+  public readonly retryAfter?: number
+  public readonly isTimeout: boolean
+  public readonly isNetworkError: boolean
+
+  constructor(
+    message: string,
+    options: { status?: number; code?: ApiErrorCode; requestId?: string; retryAfter?: number } = {}
+  ) {
+    super(message)
+    this.name = 'ApiClientError'
+    this.status = options.status || 0
+    this.code = options.code || 'UNKNOWN'
+    this.requestId = options.requestId || ''
+    this.retryAfter = options.retryAfter
+    this.isTimeout = this.code === 'TIMEOUT'
+    this.isNetworkError = this.code === 'NETWORK_ERROR'
+  }
+}
 
 export interface SafeFetchOptions extends RequestInit {
   baseUrl?: string
@@ -42,6 +102,7 @@ export interface SafeFetchOptions extends RequestInit {
   authToken?: string
   deduplicate?: boolean
   debug?: boolean
+  hooks?: ApiClientHooks
 }
 
 export interface SafeFetchResult<T = unknown> {
@@ -64,6 +125,7 @@ export interface ApiClientConfig {
   retries?: number
   retryDelayMs?: number
   debug?: boolean
+  hooks?: ApiClientHooks
 }
 
 function wait(ms: number): Promise<void> {
@@ -414,6 +476,7 @@ export function createApiClient(config: ApiClientConfig = {}) {
     getAuthToken: config.getAuthToken,
     debug: config.debug,
     headers: config.defaultHeaders,
+    hooks: config.hooks,
   }
 
   return {

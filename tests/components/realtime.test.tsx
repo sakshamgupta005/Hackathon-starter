@@ -4,6 +4,8 @@ import { createWebSocketClient } from '@/lib/realtime/websocket'
 import { parseSSEChunk, consumeSSE } from '@/lib/realtime/sse'
 import { useWebSocket } from '@/hooks/use-websocket'
 import { useRealtimeStream } from '@/hooks/use-realtime-stream'
+import { useRealtimeRoom } from '@/hooks/use-realtime-room'
+import { RealtimeCollaborationClient } from '@/lib/realtime'
 
 // Mock WebSocket implementation for unit tests
 class MockWebSocket {
@@ -384,3 +386,59 @@ describe('useRealtimeStream React Hook', () => {
     expect(result.current.isStreaming).toBe(false)
   })
 })
+
+describe('useRealtimeRoom Hook', () => {
+  it('subscribes to room state, presence, and leaves room on unmount', async () => {
+    const client = new RealtimeCollaborationClient()
+    const joinSpy = vi.spyOn(client, 'joinRoom')
+    const leaveSpy = vi.spyOn(client, 'leaveRoom')
+
+    const { result, unmount } = renderHook(() =>
+      useRealtimeRoom({
+        roomId: 'room_collab_1',
+        client,
+        initialPresence: { role: 'editor' },
+      })
+    )
+
+    expect(joinSpy).toHaveBeenCalledWith('room_collab_1', { role: 'editor' })
+    expect(result.current.myPresence).toEqual({ role: 'editor' })
+
+    // Simulate incoming room_joined state sync
+    act(() => {
+      client.receiveMessage({
+        type: 'room_joined',
+        payload: {
+          roomId: 'room_collab_1',
+          sequence: 1,
+          state: { docName: 'Proposal.pdf' },
+          stateVersions: { docName: 1 },
+          presence: {
+            peer_1: {
+              clientId: 'peer_1',
+              joinedAt: 1000,
+              updatedAt: 1000,
+              data: { role: 'viewer' },
+            },
+          },
+        },
+      })
+    })
+
+    expect(result.current.state).toEqual({ docName: 'Proposal.pdf' })
+    expect(result.current.presence['peer_1']).toBeDefined()
+
+    // Test updating own presence
+    const presenceSpy = vi.spyOn(client, 'updatePresence')
+    act(() => {
+      result.current.updatePresence({ role: 'reviewer' })
+    })
+    expect(presenceSpy).toHaveBeenCalledWith('room_collab_1', { role: 'reviewer' })
+    expect(result.current.myPresence).toEqual({ role: 'reviewer' })
+
+    // Unmount hook -> should leave room cleanly
+    unmount()
+    expect(leaveSpy).toHaveBeenCalledWith('room_collab_1')
+  })
+})
+

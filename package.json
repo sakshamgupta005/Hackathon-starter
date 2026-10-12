@@ -11,7 +11,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "env:check": "node scripts/check-env.mjs"
+    "env:check": "node scripts/check-env.mjs",
+    "verify": "node scripts/verify.mjs",
+    "verify:all": "node scripts/verify.mjs --e2e",
+    "smoke": "node scripts/smoke-test.mjs",
+    "release:check": "node scripts/release-check.mjs",
+    "hackathon:init": "node scripts/hackathon-init.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

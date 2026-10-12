@@ -81,3 +81,22 @@ The Hackathon Starter is designed as a modular, decoupled full-stack architectur
 - **Tailwind CSS v4**: Utilizes theme tokens defined in `src/app/globals.css`.
 - **Theme Variables**: Supports both Light and Dark mode using semantic CSS variables (`--background`, `--foreground`, `--primary`, `--muted`, `--border`).
 - **Accessible Primitives**: Form inputs, buttons, and alert components provide explicit ARIA roles, focus rings, disabled states, and responsive layouts.
+
+## 5. Hackathon Orchestration & Capability Selection
+
+The orchestration engine (`src/lib/orchestration/`) automates the transition from raw problem statement to verified working implementation:
+
+1. **Problem Analysis (`selector.ts`)**: Decomposes problem input into target users, priority workflows, constraints, and architecture.
+2. **Capability Matching (`capability-registry.ts`)**: Evaluates 52 modular capabilities against problem requirements, assigning `KEEP`, `MODIFY`, or `REMOVE` actions.
+3. **Topological Plan Generation**: Produces dependency-ordered implementation tasks (P1 Domain -> P2 Service -> P3 UI -> P4 E2E) with verification checks.
+4. **Project Initializer (`init.ts` / `scripts/hackathon-init.mjs`)**: Scaffolds `HACKATHON-PLAN.md` with environment credential audits and baseline checks.
+
+## 6. Bounded AI Execution Engine
+
+The bounded execution loop (`src/lib/orchestration/bounded-loop.ts` and `src/lib/agent/orchestrator.ts`) enforces strict limits on autonomous agent actions:
+
+- **Iteration Caps**: Hard maximum of 5–15 iterations to prevent runaway loops.
+- **Human Approval Guards**: Interactive confirmation required prior to destructive actions (database drops, shell deletes, deployments).
+- **Evidence-Based Completion**: Never claims success without automated test verification evidence.
+- **Deterministic Mock Fallback**: Seamless fallback to offline mock adapters when third-party API credentials are unset.
+

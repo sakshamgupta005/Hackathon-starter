@@ -1,12 +1,16 @@
 /**
- * Structured Server-Side Logger with Automated Secret Scrubbing
+ * Structured Server-Side Logger with Automated Secret Scrubbing & Child Context
+ * 
+ * Reference: Pino (https://github.com/pinojs/pino)
  * 
  * Capabilities:
  * - Leveled logging: debug, info, warn, error
  * - Structured JSON output in production, readable formatted output in development
- * - Automatic redaction of API keys, bearer tokens, passwords, and sensitive fields
- * - Request and correlation ID tagging
- * - Safe execution (logging never crashes the caller)
+ * - Automatic deep redaction of API keys, bearer tokens, passwords, and sensitive fields
+ * - Child loggers inheriting request/correlation/job context
+ * - Log injection prevention by sanitizing carriage returns and control characters
+ * - Configurable output destinations and in-memory test buffering
+ * - Non-throwing safety guard: logger operations never crash the caller
  */
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error'
@@ -69,9 +73,24 @@ export function redactSensitiveData(data: unknown): unknown {
   return data
 }
 
+/**
+ * Strips carriage returns and dangerous control characters to prevent log injection.
+ */
+export function sanitizeLogMessage(message: string): string {
+  if (!message) return ''
+  return message
+    .replace(/\r/g, '')
+    .replace(/\n/g, ' ')
+    .trim()
+}
+
 export interface LogContext {
   requestId?: string
   correlationId?: string
+  traceId?: string
+  spanId?: string
+  jobId?: string
+  agentRunId?: string
   service?: string
   [key: string]: unknown
 }
@@ -85,13 +104,21 @@ export interface LogEntry {
     name: string
     message: string
     stack?: string
+    cause?: unknown
   }
 }
 
+export type LogDestination = (level: LogLevel, entry: LogEntry, rawJson: string) => void
+
 export class StructuredLogger {
   private currentLevel: LogLevel = 'info'
+  private baseContext: LogContext = {}
+  private destination?: LogDestination
+  private buffer: LogEntry[] = []
+  private isBuffering = false
 
-  constructor(defaultLevel?: LogLevel) {
+  constructor(defaultLevel?: LogLevel, baseContext: LogContext = {}) {
+    this.baseContext = { ...baseContext }
     if (defaultLevel) {
       this.currentLevel = defaultLevel
     } else {
@@ -108,6 +135,40 @@ export class StructuredLogger {
     this.currentLevel = level
   }
 
+  setDestination(destination?: LogDestination): void {
+    this.destination = destination
+  }
+
+  enableBuffer(enable = true): void {
+    this.isBuffering = enable
+  }
+
+  getBufferedEntries(): LogEntry[] {
+    return [...this.buffer]
+  }
+
+  clearBuffer(): void {
+    this.buffer = []
+  }
+
+  /**
+   * Creates a child logger with pre-bound contextual metadata (e.g. requestId, jobId).
+   */
+  child(bindings: LogContext): StructuredLogger {
+    const childLogger = new StructuredLogger(this.currentLevel, {
+      ...this.baseContext,
+      ...bindings,
+    })
+    if (this.destination) {
+      childLogger.setDestination(this.destination)
+    }
+    if (this.isBuffering) {
+      childLogger.isBuffering = true
+      childLogger.buffer = this.buffer
+    }
+    return childLogger
+  }
+
   private shouldLog(level: LogLevel): boolean {
     return LOG_LEVEL_PRIORITY[level] >= LOG_LEVEL_PRIORITY[this.currentLevel]
   }
@@ -118,14 +179,20 @@ export class StructuredLogger {
     context?: LogContext,
     err?: unknown
   ): LogEntry {
+    const sanitizedMsg = sanitizeLogMessage(message)
     const entry: LogEntry = {
       timestamp: new Date().toISOString(),
       level,
-      message: String(redactSensitiveData(message)),
+      message: String(redactSensitiveData(sanitizedMsg)),
     }
 
-    if (context && Object.keys(context).length > 0) {
-      entry.context = redactSensitiveData(context) as LogContext
+    const mergedContext = {
+      ...this.baseContext,
+      ...(context || {}),
+    }
+
+    if (Object.keys(mergedContext).length > 0) {
+      entry.context = redactSensitiveData(mergedContext) as LogContext
     }
 
     if (err) {
@@ -133,7 +200,10 @@ export class StructuredLogger {
         entry.error = {
           name: err.name,
           message: String(redactSensitiveData(err.message)),
-          ...(process.env.NODE_ENV !== 'production' && { stack: redactSensitiveData(err.stack) as string }),
+          ...(process.env.NODE_ENV !== 'production' && err.stack
+            ? { stack: redactSensitiveData(err.stack) as string }
+            : {}),
+          ...(err.cause !== undefined ? { cause: redactSensitiveData(err.cause) } : {}),
         }
       } else {
         entry.error = {
@@ -147,13 +217,27 @@ export class StructuredLogger {
   }
 
   private write(level: LogLevel, entry: LogEntry): void {
-    const serialized = JSON.stringify(entry)
-    if (level === 'error') {
-      console.error(serialized)
-    } else if (level === 'warn') {
-      console.warn(serialized)
-    } else {
-      console.log(serialized)
+    try {
+      if (this.isBuffering) {
+        this.buffer.push(entry)
+      }
+
+      const serialized = JSON.stringify(entry)
+
+      if (this.destination) {
+        this.destination(level, entry, serialized)
+        return
+      }
+
+      if (level === 'error') {
+        console.error(serialized)
+      } else if (level === 'warn') {
+        console.warn(serialized)
+      } else {
+        console.log(serialized)
+      }
+    } catch {
+      // Safe fallback: logger never throws to disrupt caller flow
     }
   }
 

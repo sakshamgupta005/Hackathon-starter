@@ -7,6 +7,11 @@ import type { User } from '@supabase/supabase-js'
 import {
   Rocket,
   LayoutDashboard,
+  BarChart3,
+  Languages,
+  Wifi,
+  FileText,
+  Sparkles,
   Layers,
   Settings,
   LogOut,
@@ -29,6 +34,11 @@ export function DashboardShell({ user, children }: DashboardShellProps) {
 
   const navItems = [
     { title: 'Overview', href: '/dashboard', icon: LayoutDashboard },
+    { title: 'Analytics Demo', href: '/dashboard/analytics', icon: BarChart3 },
+    { title: 'Localization & a11y', href: '/dashboard/localization', icon: Languages },
+    { title: 'PWA & Offline', href: '/dashboard/pwa', icon: Wifi },
+    { title: 'Forms & Validation', href: '/dashboard/forms', icon: FileText },
+    { title: 'AI Evaluation', href: '/dashboard/ai-eval', icon: Sparkles },
     { title: 'Project Modules', href: '/dashboard/modules', icon: Layers, disabled: true },
     { title: 'Configuration', href: '/dashboard/settings', icon: Settings, disabled: true },
   ]
