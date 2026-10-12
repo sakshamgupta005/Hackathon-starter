@@ -259,7 +259,11 @@ export async function generateStructured<T>(
   // Clean markdown code blocks if model returned them
   let cleanJson = textRes.data.trim()
   if (cleanJson.startsWith('```')) {
-    cleanJson = cleanJson.replace(/^```json?\s*/i, '').replace(/```$/s, '').trim()
+    cleanJson = cleanJson.replace(/^```json?\s*/i, '')
+    if (cleanJson.endsWith('```')) {
+      cleanJson = cleanJson.slice(0, -3)
+    }
+    cleanJson = cleanJson.trim()
   }
 
   try {

@@ -4,8 +4,11 @@
  * Capabilities:
  * - Protects API routes and Server Actions from denial of service and AI credit exhaustion
  * - Zero external dependencies (no Redis required for hackathon phase)
- * - Returns standard rate limit headers (limit, remaining, reset)
+ * - Returns standard rate limit headers (limit, remaining, reset, retry-after)
  * - Automatic cleanup of stale client buckets
+ * 
+ * shortcut: In-memory sliding window is process-local and resets on serverless cold starts.
+ * For production multi-region deployments, upgrade to a distributed store (Upstash/Redis).
  */
 
 export interface RateLimitOptions {
@@ -110,4 +113,24 @@ export function checkRateLimit(
   options?: Partial<RateLimitOptions>
 ): RateLimitResult {
   return rateLimiter.check(identifier, options)
+}
+
+/**
+ * Extracts a client IP from common proxy headers (x-forwarded-for, cf-connecting-ip, x-real-ip).
+ */
+export function getClientIp(input: Request | Headers): string {
+  const headers = input instanceof Request ? input.headers : input
+  const forwarded = headers.get('x-forwarded-for')
+  if (forwarded) {
+    const first = forwarded.split(',')[0]?.trim()
+    if (first) return first
+  }
+
+  const cfIp = headers.get('cf-connecting-ip')
+  if (cfIp) return cfIp.trim()
+
+  const realIp = headers.get('x-real-ip')
+  if (realIp) return realIp.trim()
+
+  return '127.0.0.1'
 }

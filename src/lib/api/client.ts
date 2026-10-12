@@ -3,7 +3,9 @@
  * 
  * Capabilities:
  * - Configurable timeouts via AbortSignal
- * - Safe retries with exponential backoff on 5xx, 429, or network errors
+ * - Safe retries with exponential backoff & jitter on 5xx, 429, or network errors
+ * - Idempotency guard: NEVER blindly retries non-idempotent methods (POST, PATCH)
+ *   unless explicitly marked with `idempotent: true`
  * - Request ID tagging for distributed tracing
  * - Optional Zod schema response validation
  * - Safe error handling (never throws uncaught network errors)
@@ -17,6 +19,8 @@ export interface SafeFetchOptions extends RequestInit {
   retryDelayMs?: number
   requestId?: string
   schema?: z.ZodTypeAny
+  /** Set to true to allow retries on non-idempotent methods (POST, PATCH) */
+  idempotent?: boolean
 }
 
 export interface SafeFetchResult<T = unknown> {
@@ -32,6 +36,8 @@ function wait(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
+const IDEMPOTENT_METHODS = new Set(['GET', 'HEAD', 'OPTIONS', 'PUT', 'DELETE'])
+
 export async function safeFetch<T = unknown>(
   url: string,
   options: SafeFetchOptions = {}
@@ -42,9 +48,14 @@ export async function safeFetch<T = unknown>(
     retryDelayMs = 250,
     requestId = (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `req_${Date.now()}`),
     schema,
+    idempotent,
     headers = {},
+    method = 'GET',
     ...fetchInit
   } = options
+
+  const upperMethod = method.toUpperCase()
+  const isMethodIdempotent = idempotent !== undefined ? idempotent : IDEMPOTENT_METHODS.has(upperMethod)
 
   const reqHeaders = new Headers(headers)
   if (!reqHeaders.has('x-request-id')) {
@@ -63,6 +74,7 @@ export async function safeFetch<T = unknown>(
     try {
       const response = await fetch(url, {
         ...fetchInit,
+        method: upperMethod,
         headers: reqHeaders,
         signal: controller.signal,
       })
@@ -76,14 +88,16 @@ export async function safeFetch<T = unknown>(
         try {
           const body = await response.text()
           if (body) {
-            errDetail = body.length > 200 ? `${body.slice(0, 200)}...` : body
+            errDetail = body.length > 250 ? `${body.slice(0, 250)}...` : body
           }
         } catch {
           // ignore body reading error
         }
 
-        const isRetryable = response.status === 429 || response.status >= 500
-        if (!isRetryable || attempts > retries) {
+        const isUpstreamError = response.status === 429 || response.status >= 500
+        const shouldRetry = isUpstreamError && isMethodIdempotent && attempts <= retries
+
+        if (!shouldRetry) {
           return {
             ok: false,
             status: response.status,
@@ -93,8 +107,10 @@ export async function safeFetch<T = unknown>(
           }
         }
 
-        // Wait before retry
-        await wait(retryDelayMs * Math.pow(2, attempts - 1))
+        // Exponential backoff with jitter (+/- 20%)
+        const backoff = retryDelayMs * Math.pow(2, attempts - 1)
+        const jitter = backoff * (0.8 + Math.random() * 0.4)
+        await wait(jitter)
         continue
       }
 
@@ -139,7 +155,9 @@ export async function safeFetch<T = unknown>(
         lastError = String(err)
       }
 
-      if (attempts > retries) {
+      // Network errors: only retry if idempotent and attempts remain
+      const shouldRetry = isMethodIdempotent && attempts <= retries
+      if (!shouldRetry) {
         return {
           ok: false,
           status: lastStatus || 0,
@@ -149,7 +167,9 @@ export async function safeFetch<T = unknown>(
         }
       }
 
-      await wait(retryDelayMs * Math.pow(2, attempts - 1))
+      const backoff = retryDelayMs * Math.pow(2, attempts - 1)
+      const jitter = backoff * (0.8 + Math.random() * 0.4)
+      await wait(jitter)
     }
   }
 

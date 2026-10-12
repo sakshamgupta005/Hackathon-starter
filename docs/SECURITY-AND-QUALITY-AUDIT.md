@@ -57,9 +57,19 @@ An architectural and security audit was conducted covering authentication, sessi
 3. **Automated CI Workflow**: Configured `.github/workflows/ci.yml` running linting, type checks, unit tests, production build, and Playwright smoke tests.
 4. **Header-Based Verification Guides**: Updated documentation to use secure headers (e.g. `x-goog-api-key`) instead of query parameters with secrets.
 
+5. **HTTP Defense-in-Depth Security Headers**: Configured `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Strict-Transport-Security`, and compatible Content-Security-Policy via `src/lib/security/headers.ts` in `next.config.ts`.
+6. **Server-Side Authentication Guard**: Created `requireServerUser()` in `src/lib/supabase/auth-guard.ts` for Route Handlers and Server Actions, ensuring server-level validation against Supabase Auth without trusting unverified cookies.
+7. **Input & Output Sanitization**: Created `src/lib/security/sanitize.ts` providing `escapeHtml()`, `stripHtmlTags()`, `sanitizeFileName()` (blocking path traversal and null bytes), and `sanitizePlainText()`.
+8. **File Upload Security & Size Constraints**: Implemented `validateUploadFile()` in `src/lib/security/upload.ts` with size limits (default 5MB), MIME type allowlisting, and rejection of dangerous script/executable extensions.
+9. **Rate Limiting with Deployment Distinction**: Implemented `checkRateLimit()` and `getClientIp()` in `src/lib/security/rate-limit.ts` with explicit documentation distinguishing in-memory local/demo operation from production distributed store requirements (Upstash/Redis).
+
 ---
 
-## 3. Residual Risks & Future Project Guidance
+## 3. Residual Risks & Deployment Requirements
 
-- **Rate Limits & Spending Caps**: When connecting real keys, configure project-level spending limits on provider dashboards to avoid unexpected overages during hackathon demos.
-- **Row-Level Security (RLS)**: When adding custom PostgreSQL tables in future hackathon stages, always enable RLS policies on Supabase tables to ensure users only access their own data.
+- **Rate Limiting Deployment Requirement**: The in-memory rate limiter is process-local and resets on serverless cold starts. For distributed multi-region production, developers must upgrade to an Upstash Redis or durable key-value store.
+- **Content-Security-Policy (CSP) Tuning**: The baseline CSP permits inline styles and eval for Next.js Turbopack development. In strict production enterprise environments, nonces or hash-based CSPs can be configured once asset CDNs are known.
+- **File Upload Infrastructure**: `validateUploadFile()` provides client/server pre-validation; when wiring uploads to Supabase Storage, enforce matching bucket policies and RLS rules in the Supabase cloud dashboard.
+- **Spending Caps & Provider Quotas**: Configure billing alerts and hard monthly spending limits on AI provider dashboards before public demos.
+- **Row-Level Security (RLS)**: When creating application-specific tables in derived hackathon projects, ensure PostgreSQL RLS is enabled with explicit policies.
+

@@ -48,4 +48,15 @@ test.describe('Hackathon Starter Smoke Tests', () => {
     ).toBeVisible()
     await expect(page.getByText(/product workspace extension point/i)).toBeVisible()
   })
+
+  test('Health probe /api/health responds with 200 JSON payload', async ({ request }) => {
+    const response = await request.get('/api/health')
+    expect(response.status()).toBe(200)
+
+    const data = await response.json()
+    expect(data.success).toBe(true)
+    expect(data.data.status).toBe('healthy')
+    expect(data.data.uptimeSeconds).toBeGreaterThanOrEqual(0)
+    expect(data.requestId).toBeDefined()
+  })
 })

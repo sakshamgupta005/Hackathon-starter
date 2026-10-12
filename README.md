@@ -91,6 +91,29 @@ Always verify changes using the standard npm scripts:
 | `npm run build` | Compiles production bundle with Next.js Turbopack. |
 | `npm run env:check` | Inspects local environment configuration without leaking secrets. |
 
+### Reusable Test Fixtures & Offline Testing
+
+The test harness is designed to execute **100% offline** without live provider credentials or billable API costs:
+- **Auth Fixtures** ([`tests/fixtures/auth.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/tests/fixtures/auth.ts)): Deterministic mock users, sessions, and tokens.
+- **API Fixtures** ([`tests/fixtures/api.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/tests/fixtures/api.ts)): Mock JSON, error, and streaming HTTP responses.
+- **AI Fixtures** ([`tests/fixtures/ai.ts`](file:///c:/Users/rspma/Downloads/Hackathon-starter/tests/fixtures/ai.ts)): Deterministic OpenAI and Gemini response payloads with token usage.
+
+### Test Troubleshooting & Tips
+
+- **Playwright Missing Browsers**: If E2E tests fail with missing browser executable, run:
+  ```bash
+  npx playwright install --with-deps chromium
+  ```
+- **Port 3000 in Use**: Playwright automatically starts `next dev` on port 3000. If port 3000 is occupied by a prior process, kill it before running `npm run test:e2e`:
+  ```powershell
+  # Windows PowerShell:
+  Get-Process -Id (Get-NetTCPConnection -LocalPort 3000).OwningProcess | Stop-Process
+  ```
+- **Single Test File**: Run a single unit test during rapid iterations:
+  ```bash
+  npx vitest run tests/unit/api-client.test.ts
+  ```
+
 ---
 
 ## 6. How to Start a Real Hackathon Project
@@ -116,10 +139,11 @@ Never develop project-specific hackathon features directly on the master templat
 
 ## 7. Key Documentation Index
 
+- [docs/CAPABILITY-CATALOG.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/CAPABILITY-CATALOG.md) — Inventory of modular capabilities (reliability, security, AI, testing).
 - [AGENTS.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/AGENTS.md) — Operating guide and rules for AI coding assistants.
 - [TEMPLATE_GUIDE.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/TEMPLATE_GUIDE.md) — Template identity, infrastructure boundaries, and transformation rules.
 - [docs/HACKATHON-KICKOFF.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/HACKATHON-KICKOFF.md) — Copy-ready hackathon day launch runbook.
-- [docs/SECURITY-AND-QUALITY-AUDIT.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/SECURITY-AND-QUALITY-AUDIT.md) — Security audit findings and safe redirect controls.
+- [docs/SECURITY-AND-QUALITY-AUDIT.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/SECURITY-AND-QUALITY-AUDIT.md) — Security audit findings, headers, and safe redirect controls.
 - [docs/API-KEY-SETUP.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/API-KEY-SETUP.md) — Provider setup, dashboard links, safe verification, and credit limits.
 - [docs/ARCHITECTURE.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/ARCHITECTURE.md) — System architecture, cookie flow, and request lifecycle.
 - [docs/SETUP.md](file:///c:/Users/rspma/Downloads/Hackathon-starter/docs/SETUP.md) — Setup and deployment guide (Vercel & Supabase).
